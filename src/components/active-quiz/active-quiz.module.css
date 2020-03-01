@@ -1,0 +1,13 @@
+.wrapper {
+  color: #fff;
+  padding: 20px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
