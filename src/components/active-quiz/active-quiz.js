@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './active-quiz.module.css'
 import AnswersList from './answers-list'
+import QuizContext from '../../context/quiz-context'
 
 const ActiveQuiz = () => {
+  const context = useContext(QuizContext)
+  const { quiz, active } = context
+
   return (
     <div className={styles.wrapper}>
       <p className={styles.title}>
         <span>
-          <strong>2. Как дела?</strong>
+          <strong>{quiz[active].question}</strong>
           &nbsp;
         </span>
-        <small>4 из 12</small>
+        <small>
+          {active + 1} из {quiz.length}
+        </small>
       </p>
       <AnswersList />
     </div>

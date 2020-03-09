@@ -4,11 +4,12 @@ import QuizContext from '../../../context/quiz-context'
 
 const AnswersList = () => {
   const context = useContext(QuizContext)
+  const { quiz, active } = context
 
   return (
     <ul>
-      {context.answers.map((answer, index) => {
-        return <AnswerItem item={answer} key={index} />
+      {quiz[active].answers.map(answer => {
+        return <AnswerItem item={answer} key={answer.id} />
       })}
     </ul>
   )
