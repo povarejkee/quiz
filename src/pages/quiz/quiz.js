@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from './quiz.module.css'
 import ActiveQuiz from '../../components/active-quiz'
 import QuizContext from '../../context/quiz-context'
+import Results from '../../components/results'
 
 const quiz = [
   {
@@ -29,7 +30,7 @@ const quiz = [
   },
   {
     id: 2,
-    question: 'В каком году основал Санкт-Петербург?',
+    question: 'В каком году основан Санкт-Петербург?',
     rightAnswer: 2,
     answers: [
       {
@@ -54,14 +55,34 @@ const quiz = [
 
 const Quiz = () => {
   const [active, changeActive] = useState(0)
+  const [answerState, setAnswerState] = useState(null)
+  const [finished, setFinished] = useState(false)
+  const [result, setResult] = useState({})
 
-  const onAnswerClick = id => {
-    console.log(active, quiz.length)
+  const onAnswerClick = answerId => {
+    const questionId = quiz[active].id
+    const rightAnswerId = quiz[active].rightAnswer
+    const isLastQuestion = active + 1 === quiz.length
 
-    if (id === quiz[active].rightAnswer) {
-      changeActive(active + 1)
+    if (answerId === rightAnswerId) {
+      setAnswerState({ [answerId]: 'success' })
+
+      if (!result[questionId]) {
+        setResult({ [questionId]: 'success', ...result })
+      }
+
+      if (!isLastQuestion) {
+        const timeout = setTimeout(() => {
+          changeActive(active + 1)
+          setAnswerState(null)
+          clearTimeout(timeout)
+        }, 1000)
+      } else {
+        setFinished(true)
+      }
     } else {
-      console.error('Неправильный ответ')
+      setAnswerState({ [answerId]: 'error' })
+      setResult({ [questionId]: 'error', ...result })
     }
   }
 
@@ -71,11 +92,13 @@ const Quiz = () => {
         quiz,
         onAnswerClick,
         active,
+        answerState,
+        result,
       }}>
       <div className={styles.wrapper}>
         <div className={styles.quiz}>
-          <h1>Ответьте на все вопросы</h1>
-          <ActiveQuiz />
+          <h1 className={styles.title}>Ответьте на все вопросы</h1>
+          {!finished ? <ActiveQuiz /> : <Results />}
         </div>
       </div>
     </QuizContext.Provider>

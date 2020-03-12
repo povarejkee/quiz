@@ -9,3 +9,8 @@
 .quiz {
   width: 600px;
 }
+
+.title {
+  font-size: 32px;
+  color: #fff;
+}

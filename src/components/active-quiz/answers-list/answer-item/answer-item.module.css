@@ -10,3 +10,11 @@
 .answer:hover {
   background-color: #abab;
 }
+
+.success {
+  background-color: forestgreen;
+}
+
+.error {
+  background-color: darkred;
+}
