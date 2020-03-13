@@ -1,0 +1,35 @@
+.drawer {
+  width: 300px;
+  height: 100vh;
+  background-color: #fff;
+  position: fixed;
+  z-index: 9;
+  transform: translateX(-300px);
+  transition: transform 0.3s;
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.list {
+  padding: 40px 0 0 20px;
+}
+
+.link:not(:first-child) {
+  margin-top: 24px;
+}
+
+.link {
+  font-size: 24px;
+}
+
+.link:hover {
+  opacity: 0.7;
+}
+
+.link a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+}
