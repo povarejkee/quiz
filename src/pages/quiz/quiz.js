@@ -78,7 +78,10 @@ const Quiz = () => {
           clearTimeout(timeout)
         }, 1000)
       } else {
-        setFinished(true)
+        const timeout = setTimeout(() => {
+          setFinished(true)
+          clearTimeout(timeout)
+        }, 1000)
       }
     } else {
       setAnswerState({ [answerId]: 'error' })
@@ -86,11 +89,19 @@ const Quiz = () => {
     }
   }
 
+  const onRetry = () => {
+    setResult({})
+    setFinished(false)
+    changeActive(0)
+    setAnswerState(null)
+  }
+
   return (
     <QuizContext.Provider
       value={{
         quiz,
         onAnswerClick,
+        onRetry,
         active,
         answerState,
         result,

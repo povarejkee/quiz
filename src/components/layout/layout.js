@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './layout.module.css'
-import MenuToggle from '../components/menu-toggle'
-import Drawer from '../components/drawer'
+import MenuToggle from '../menu-toggle'
+import Drawer from '../drawer'
 
 const Layout = ({ children }) => {
   const [open, toggleOpen] = useState(false)

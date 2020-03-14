@@ -11,10 +11,12 @@
   background-color: #abab;
 }
 
-.success {
+.success,
+.success:hover {
   background-color: forestgreen;
 }
 
-.error {
+.error,
+.error:hover {
   background-color: darkred;
 }

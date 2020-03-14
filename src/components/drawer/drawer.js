@@ -1,9 +1,14 @@
 import React, { Fragment } from 'react'
+import { NavLink } from 'react-router-dom'
 import styles from './drawer.module.css'
 import classnames from 'classnames'
 import Overlay from './overlay'
 
-const links = [1, 2, 3]
+const links = [
+  { title: 'Авторизация', to: '/auth', exact: false },
+  { title: 'Список тестов', to: '/', exact: true },
+  { title: 'Создать тест', to: '/quiz-creation', exact: false },
+]
 
 const Drawer = props => {
   const { open, toggleOpen } = props
@@ -18,7 +23,13 @@ const Drawer = props => {
           {links.map((link, index) => {
             return (
               <li key={index} className={styles.link}>
-                <a href="#">Link {link}</a>
+                <NavLink
+                  to={link.to}
+                  exact={link.exact}
+                  activeClassName={styles.active}
+                  onClick={() => toggleOpen(false)}>
+                  {link.title}
+                </NavLink>
               </li>
             )
           })}

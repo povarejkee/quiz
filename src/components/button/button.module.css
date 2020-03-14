@@ -1,0 +1,33 @@
+.btn {
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.btn * {
+  color: #000;
+}
+
+.btn:active {
+  box-shadow: inset 2px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+.btn:disabled {
+  background-color: #ccc;
+  color: #000;
+  cursor: not-allowed;
+}
+
+.primary {
+  background-color: #2884f6;
+  color: #fff;
+}
+
+.success {
+  background-color: rgba(161, 240, 69, 1);
+}
