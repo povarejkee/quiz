@@ -48,10 +48,10 @@ const Auth = () => {
             onChange={formik.handleChange}
             errorMessage={formik.errors.password}
           />
-          <Button type="success" className={styles.button} htmlType="submit">
+          <Button type="success" className={styles.btn} htmlType="submit">
             Войти
           </Button>
-          <Button type="primary" className={styles.button}>
+          <Button type="primary" className={styles.btn}>
             Регистрация
           </Button>
         </form>

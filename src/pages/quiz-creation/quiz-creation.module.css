@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  padding-top: 6rem;
+  background: linear-gradient(270deg, #f0613c 0%, #f0783c 100%);
+}
+
+.quizCreation {
+  width: 600px;
+}
+
+.title {
+  font-size: 32px;
+  color: #fff;
+  text-align: center;
+}
+
+.form {
+  background-color: #eee;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.formItem:not(:first-child) {
+  margin: 15px 0;
+}
+
+.btn:not(:first-of-type) {
+  margin-left: 15px;
+}
