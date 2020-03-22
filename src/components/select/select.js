@@ -33,9 +33,7 @@ const Select = props => {
           })}
         </select>
       </label>
-      {errorMessage ? (
-        <p className={styles.errorMessage}>{errorMessage}</p>
-      ) : null}
+      {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
     </div>
   )
 }

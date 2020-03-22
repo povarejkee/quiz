@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './quiz-creation.module.css'
 import Input from '../../components/input'
 import Button from '../../components/button'
@@ -22,6 +22,8 @@ const validationSchema = Yup.object().shape({
 })
 
 const QuizCreation = () => {
+  const [quiz, setQuiz] = useState([])
+
   const formik = useFormik({
     initialValues: {
       title: '',
@@ -31,7 +33,36 @@ const QuizCreation = () => {
       fourth: '',
       correct: 1,
     },
-    onSubmit: values => console.log(values),
+    onSubmit: values => {
+      const question = {
+        id: quiz.length + 1,
+        question: values.title,
+        rightAnswer: values.correct,
+        answers: [
+          {
+            text: values.first,
+            id: 1,
+          },
+          {
+            text: values.second,
+            id: 2,
+          },
+          {
+            text: values.third,
+            id: 3,
+          },
+          {
+            text: values.fourth,
+            id: 4,
+          },
+        ],
+      }
+
+      setQuiz(prev => [...prev, question])
+      // todo SERVER + FLUX
+      formik.resetForm()
+      console.log(question)
+    },
     validationSchema,
     enableReinitialize: true,
   })
@@ -103,7 +134,11 @@ const QuizCreation = () => {
           <Button type="primary" className={styles.btn} htmlType="submit">
             Добавить вопрос
           </Button>
-          <Button type="success" className={styles.btn}>
+          <Button
+            type="success"
+            className={styles.btn}
+            htmlType="button"
+            disabled={!quiz.length}>
             Создать тест
           </Button>
         </form>
