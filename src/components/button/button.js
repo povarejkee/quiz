@@ -3,7 +3,15 @@ import styles from './button.module.css'
 import classnames from 'classnames'
 
 const Button = props => {
-  const { className, style, type, onClick, children, disabled } = props
+  const {
+    className,
+    style,
+    type,
+    onClick,
+    children,
+    disabled,
+    htmlType,
+  } = props
 
   return (
     <button
@@ -13,7 +21,8 @@ const Button = props => {
         [styles.success]: type === 'success',
       })}
       onClick={onClick}
-      disabled={disabled}>
+      disabled={disabled}
+      type={htmlType}>
       {children}
     </button>
   )
